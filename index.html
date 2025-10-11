@@ -280,7 +280,7 @@
         }
 
         .profile-container {
-            text-align: center;
+            position: relative;
         }
 
         .profile-circle {
@@ -947,7 +947,7 @@
                             <!-- Surprise Emojis (hidden by default, NO balloon) -->
                             <div id="smile-confetti" style="display:none; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); pointer-events:none; width:100%; height:100%;">
                                 <!-- Top Left -->
-                                <span class="pop-emoji" style="position:absolute; left:-25px; top:-25px; font-size:1.7rem; opacity:0;">🎉</span>
+                                <span class="pop-emoji" style="position:absolute; left:-25px; top:-25px; font-size:1.7rem; opacity:0;">🎈</span>
                                 <!-- Top Right -->
                                 <span class="pop-emoji" style="position:absolute; right:-25px; top:-25px; font-size:1.7rem; opacity:0;">✨</span>
                                 <!-- Bottom Left -->
@@ -960,8 +960,17 @@
                     <!-- Right Side - Profile Picture with Hat and Name bar attached to circle -->
                     <div class="right-section" style="display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;">
                         <div class="profile-container" style="position:relative;">
-                            <!-- Birthday Hat above profile circle -->
-                            <span style="position:absolute;top:-40px;left:50%;transform:translateX(-50%);font-size:2.5rem;z-index:2;">🎉</span>
+                            <!-- Birthday Hat above profile circle (size 4.3rem, thora sa aur niche) -->
+                            <span style="
+                                position:absolute;
+                                top:-45px; /* aur niche kiya */
+                                left:50%;
+                                transform:translateX(-50%) scaleY(-1) rotate(-35deg);
+                                font-size:4.3rem;
+                                z-index:2;
+                                ">
+                                🎉
+                            </span>
                             <div class="profile-circle" style="margin-top:30px; background: none; border: 4px solid #4ecdc4;">
                                 <img src="dp.jpg" alt="Aira" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
                             </div>
@@ -1186,4 +1195,3 @@
     </script>
 </body>
 </html>
-
