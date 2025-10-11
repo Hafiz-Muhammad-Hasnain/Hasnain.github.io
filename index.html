@@ -281,7 +281,6 @@
 
         .profile-container {
             text-align: center;
-            position: relative;
         }
 
         .profile-circle {
@@ -295,7 +294,6 @@
             justify-content: center;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
             margin: 0 auto 20px;
-            overflow: hidden;
         }
 
         .profile-initial {
@@ -367,18 +365,6 @@
         .surprise-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
-        }
-
-        /* Birthday Hat */
-        .birthday-hat {
-            position: absolute;
-            top: -55px;
-            left: 50%;
-            transform: translateX(-50%) scaleY(-1) rotate(-35deg); /* Flip vertically and rotate left */
-            font-size: 4.5rem;
-            z-index: 5;
-            filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.3));
-            transition: transform 0.7s cubic-bezier(.68,-0.55,.27,1.55);
         }
 
         /* Interactive Birthday Card - Book Style */
@@ -716,13 +702,6 @@
             75% { transform: rotate(-2deg); }
         }
 
-        @keyframes hat-wiggle {
-            0%, 100% { transform: translateX(-50%) rotate(-15deg); }
-            25% { transform: translateX(-50%) rotate(-10deg); }
-            50% { transform: translateX(-50%) rotate(-20deg); }
-            75% { transform: translateX(-50%) rotate(-10deg); }
-        }
-
         @keyframes fadeIn {
             0% { opacity: 0; }
             100% { opacity: 1; }
@@ -743,6 +722,13 @@
         @keyframes cardAppear {
             0% { transform: scale(0.5) translateY(50px); opacity: 0; }
             100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        @keyframes pop-emoji-anim {
+            0%   { opacity: 0; transform: scale(0.2);}
+            20%  { opacity: 1; transform: scale(1);}
+            80%  { opacity: 1; transform: scale(1.25);}
+            100% { opacity: 0; transform: scale(1.4);}
         }
 
         /* Responsive Design */
@@ -784,11 +770,6 @@
             
             .profile-name {
                 font-size: 1.8rem;
-            }
-            
-            .birthday-hat {
-                top: -40px;
-                font-size: 3rem;
             }
             
             .birthday-card {
@@ -859,11 +840,6 @@
             
             .profile-name {
                 font-size: 1.5rem;
-            }
-            
-            .birthday-hat {
-                top: -35px;
-                font-size: 2.5rem;
             }
             
             .surprise-btn {
@@ -958,9 +934,9 @@
                             🎁 Click Here 🎁
                         </button>
                     </div>
-                    <!-- Center Section - Custom Smile Image -->
+                    <!-- Center Section - Custom Smile Image with animated surprise emojis (NO balloon) -->
                     <div class="center-section" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:90px;">
-                        <div style="width: 60px; height: 60px; background: white; border: 3px solid black; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; box-shadow: 0 2px 8px #222;">
+                        <div id="smile-surprise" style="width: 60px; height: 60px; background: white; border: 3px solid black; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; box-shadow: 0 2px 8px #222; cursor: pointer; position: relative; transition: box-shadow 0.3s, transform 0.3s; transform: rotate(-25deg);">
                             <div style="position: relative; width: 100%; height: 100%;">
                                 <!-- Eyes -->
                                 <div style="position: absolute; top: 20px; left: 15px; width: 8px; height: 8px; background: black; border-radius: 50%;"></div>
@@ -968,12 +944,24 @@
                                 <!-- Smile -->
                                 <div style="position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); width: 20px; height: 10px; border: 2px solid black; border-top: none; border-radius: 0 0 20px 20px;"></div>
                             </div>
+                            <!-- Surprise Emojis (hidden by default, NO balloon) -->
+                            <div id="smile-confetti" style="display:none; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); pointer-events:none; width:100%; height:100%;">
+                                <!-- Top Left -->
+                                <span class="pop-emoji" style="position:absolute; left:-25px; top:-25px; font-size:1.7rem; opacity:0;">🎉</span>
+                                <!-- Top Right -->
+                                <span class="pop-emoji" style="position:absolute; right:-25px; top:-25px; font-size:1.7rem; opacity:0;">✨</span>
+                                <!-- Bottom Left -->
+                                <span class="pop-emoji" style="position:absolute; left:-25px; bottom:-25px; font-size:1.7rem; opacity:0;">🎊</span>
+                                <!-- Bottom Right -->
+                                <span class="pop-emoji" style="position:absolute; right:-25px; bottom:-25px; font-size:1.7rem; opacity:0;">🥳</span>
+                            </div>
                         </div>
                     </div>
                     <!-- Right Side - Profile Picture with Hat and Name bar attached to circle -->
                     <div class="right-section" style="display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;">
                         <div class="profile-container" style="position:relative;">
-                            <div class="birthday-hat" id="birthdayHat">🎉</div>
+                            <!-- Birthday Hat above profile circle -->
+                            <span style="position:absolute;top:-40px;left:50%;transform:translateX(-50%);font-size:2.5rem;z-index:2;">🎉</span>
                             <div class="profile-circle" style="margin-top:30px; background: none; border: 4px solid #4ecdc4;">
                                 <img src="dp.jpg" alt="Aira" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
                             </div>
@@ -1035,10 +1023,10 @@
             </div>
             
             <!-- Decorative elements -->
-            <div style="position: absolute; top: 20px; left: 20px; font-size: 1.5rem;">🎊</div>
+            <div style="position: absolute; top: 20px; left: 20px; font-size: 1.5rem;">🎈</div>
             <div style="position: absolute; top: 20px; right: 50px; font-size: 1.5rem;">🎁</div>
             <div style="position: absolute; bottom: 20px; left: 20px; font-size: 1.5rem;">✨</div>
-            <div style="position: absolute; bottom: 20px; right: 20px; font-size: 1.5rem;">🎈</div>
+            <div style="position: absolute; bottom: 20px; right: 20px; font-size: 1.5rem;">🎊</div>
         </div>
     </div>
     <!-- Footer Message -->
@@ -1165,6 +1153,36 @@
         canvas.height = innerHeight;
       });
     </script>
+    <script>
+        // Surprise effect on smile emoji (hover or click)
+        const smileDiv = document.getElementById('smile-surprise');
+        const smileConfetti = document.getElementById('smile-confetti');
+        const popEmojis = smileConfetti.querySelectorAll('.pop-emoji');
+        let confettiTimeout;
+
+        function showSmileSurprise() {
+            smileConfetti.style.display = 'block';
+            smileDiv.style.boxShadow = '0 0 30px 10px #ffeb3b, 0 2px 8px #222';
+            smileDiv.style.transform = 'scale(1.15) rotate(12deg)'; // Now rotates right on hover/click
+            // Animate each emoji
+            popEmojis.forEach((el, i) => {
+                el.style.opacity = '1';
+                el.style.animation = `pop-emoji-anim 1s ${i*0.08}s both`;
+            });
+            clearTimeout(confettiTimeout);
+            confettiTimeout = setTimeout(() => {
+                smileConfetti.style.display = 'none';
+                smileDiv.style.boxShadow = '0 2px 8px #222';
+                smileDiv.style.transform = 'scale(1) rotate(-25deg)'; // Back to default (left)
+                popEmojis.forEach(el => {
+                    el.style.opacity = '0';
+                    el.style.animation = 'none';
+                });
+            }, 1200);
+        }
+
+        smileDiv.addEventListener('mouseenter', showSmileSurprise);
+        smileDiv.addEventListener('click', showSmileSurprise);
+    </script>
 </body>
 </html>
-
