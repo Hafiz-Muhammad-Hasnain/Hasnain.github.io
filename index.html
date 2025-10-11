@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎉 Happy Birthday Wish  🎂</title>
+    <title>🎉 Happy Birthday Wish Kro! 🎂</title>
     <style>
         * {
             margin: 0;
@@ -281,6 +281,7 @@
 
         .profile-container {
             text-align: center;
+            position: relative;
         }
 
         .profile-circle {
@@ -294,6 +295,7 @@
             justify-content: center;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
             margin: 0 auto 20px;
+            overflow: hidden;
         }
 
         .profile-initial {
@@ -365,6 +367,18 @@
         .surprise-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Birthday Hat */
+        .birthday-hat {
+            position: absolute;
+            top: -55px;
+            left: 50%;
+            transform: translateX(-50%) scaleY(-1) rotate(-35deg); /* Flip vertically and rotate left */
+            font-size: 4.5rem;
+            z-index: 5;
+            filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.3));
+            transition: transform 0.7s cubic-bezier(.68,-0.55,.27,1.55);
         }
 
         /* Interactive Birthday Card - Book Style */
@@ -702,6 +716,13 @@
             75% { transform: rotate(-2deg); }
         }
 
+        @keyframes hat-wiggle {
+            0%, 100% { transform: translateX(-50%) rotate(-15deg); }
+            25% { transform: translateX(-50%) rotate(-10deg); }
+            50% { transform: translateX(-50%) rotate(-20deg); }
+            75% { transform: translateX(-50%) rotate(-10deg); }
+        }
+
         @keyframes fadeIn {
             0% { opacity: 0; }
             100% { opacity: 1; }
@@ -763,6 +784,11 @@
             
             .profile-name {
                 font-size: 1.8rem;
+            }
+            
+            .birthday-hat {
+                top: -40px;
+                font-size: 3rem;
             }
             
             .birthday-card {
@@ -833,6 +859,11 @@
             
             .profile-name {
                 font-size: 1.5rem;
+            }
+            
+            .birthday-hat {
+                top: -35px;
+                font-size: 2.5rem;
             }
             
             .surprise-btn {
@@ -942,8 +973,7 @@
                     <!-- Right Side - Profile Picture with Hat and Name bar attached to circle -->
                     <div class="right-section" style="display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;">
                         <div class="profile-container" style="position:relative;">
-                            <!-- Birthday Hat above profile circle -->
-                            <span style="position:absolute;top:-40px;left:50%;transform:translateX(-50%);font-size:2.5rem;z-index:2;">🎉</span>
+                            <div class="birthday-hat" id="birthdayHat">🎉</div>
                             <div class="profile-circle" style="margin-top:30px; background: none; border: 4px solid #4ecdc4;">
                                 <img src="dp.jpg" alt="Aira" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
                             </div>
@@ -997,7 +1027,7 @@
             <!-- Birthday Message -->
             <div style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; margin: 15px 0; backdrop-filter: blur(10px);">
                 <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: #ffeb3b;">🎂 Happy Birthday! 🎂</h3>
-                <p style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 8px;">Allah apko hamesha khush  aur sehat mand rakhay. 💖</p>
+                <p style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 8px;">Allah apko hamesha khush aur sehat mand rakhay. 💖</p>
                 <p style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 8px;">Aapki zindagi mein barkat aur khushi ho. ✨</p>
                 <p style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 8px;">Aap hamesha muskurati rahiye aur khush rahiye. 😊</p>
                 <p style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 8px;">May Allah bless you with all the happiness in the world. 🌟</p>
@@ -1005,10 +1035,10 @@
             </div>
             
             <!-- Decorative elements -->
-            <div style="position: absolute; top: 20px; left: 20px; font-size: 1.5rem;">🎈</div>
+            <div style="position: absolute; top: 20px; left: 20px; font-size: 1.5rem;">🎊</div>
             <div style="position: absolute; top: 20px; right: 50px; font-size: 1.5rem;">🎁</div>
             <div style="position: absolute; bottom: 20px; left: 20px; font-size: 1.5rem;">✨</div>
-            <div style="position: absolute; bottom: 20px; right: 20px; font-size: 1.5rem;">🎊</div>
+            <div style="position: absolute; bottom: 20px; right: 20px; font-size: 1.5rem;">🎈</div>
         </div>
     </div>
     <!-- Footer Message -->
@@ -1137,5 +1167,3 @@
     </script>
 </body>
 </html>
-
-
